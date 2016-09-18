@@ -1,3 +1,6 @@
+from Queue import Queue
+
+
 class TreeNode:
 
     data = None
@@ -5,13 +8,19 @@ class TreeNode:
     right = None
 
     visited = False
+    marked = False
 
     def __init__(self, data):
         self.data = data
 
+    def print_data(self):
+        left_data = self.left.data if self.left else None
+        right_data = self.right.data if self.right else None
+        print 'node: {0}, left: {1}, right: {2}'.format(self.data, left_data, right_data)
+
 
 def visit(node):
-    print node.data
+    node.print_data()
 
 
 def in_order_traversal(node):
@@ -49,6 +58,26 @@ def dfs(node):
         dfs(node.right)
 
 
+def bfs(node):
+
+    q = Queue()
+
+    node.marked = True
+    q.put(node)
+
+    while not q.empty():
+        n = q.get()
+        visit(n)
+
+        if n.left:
+            n.left.marked = True
+            q.put(n.left)
+
+        if n.right:
+            n.right.marked = True
+            q.put(n.right)
+
+
 def create_minimal_bst(array, start, end):
 
     if end < start:
@@ -68,4 +97,5 @@ if __name__ == '__main__':
     #pre_order_traversal(tree)
     #post_order_traversal(tree)
 
-    dfs(tree)
+    #dfs(tree)
+    bfs(tree)
