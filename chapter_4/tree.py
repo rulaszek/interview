@@ -7,6 +7,8 @@ class TreeNode:
     left = None
     right = None
 
+    unvisited = True
+    visiting = False
     visited = False
     marked = False
 
