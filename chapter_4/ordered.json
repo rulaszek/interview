@@ -1,0 +1,18 @@
+{
+  "plan": [
+    { "name": "H" },
+    { "name": "D" },
+    { "name": "F" },
+    { "name": "Wait", "on": ["D", "F"] },
+    { "name": "G" },
+    { "name": "B" },
+    { "name": "C" },
+    { "name": "Wait", "on": ["B", "C"] },
+    { "name": "A" },
+    { "name": "Wait", "on": ["A"] },
+    { "name": "E" },
+    { "name": "Wait", "on": ["E"] },
+    { "name": "Wait", "on": ["H", "G"] }
+  ]
+}
+

@@ -1,0 +1,36 @@
+{
+  "graph": [
+    {
+      "name": "A",
+      "children": [ "E" ]
+    },
+    {
+      "name": "B",
+      "children": [ "A" ]
+    },
+    {
+      "name": "C",
+      "children": [ "A" ]
+    },
+    {
+      "name": "D",
+      "children": [ "G" ]
+    },
+    {
+      "name": "E",
+      "children": [ ]
+    },
+    {
+      "name": "F",
+      "children": [ "A", "C" ]
+    },
+    {
+      "name": "G",
+      "children": [ ]
+    },
+    {
+      "name": "H",
+      "children": [ ]
+    }
+  ]
+}

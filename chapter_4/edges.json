@@ -1,0 +1,36 @@
+{
+  "tasks": [
+    {
+      "name": "A",
+      "dependencies": [ ["B", "A"], ["C", "A"], ["F", "A"] ]
+    },
+    {
+      "name": "B",
+      "dependencies": [ ["F", "B"] ]
+    },
+    {
+      "name": "C",
+      "dependencies": [ ["F", "C"] ]
+    },
+    {
+      "name": "D",
+      "dependencies": [ ]
+    },
+    {
+      "name": "E",
+      "dependencies": [["A", "E"]]
+    },
+    {
+      "name": "F",
+      "dependencies": [ ]
+    },
+    {
+      "name": "G",
+      "dependencies": [["D", "G"]]
+    },
+    {
+      "name": "H",
+      "dependencies": [ ]
+    }
+  ]
+}
