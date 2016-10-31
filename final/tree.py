@@ -87,3 +87,63 @@ def get_max_data(root):
     get_max_data(root.get_right())
 
     return max_data
+
+
+def find(root, data):
+
+    if not root:
+        return 0
+
+    if root.get_data() == data:
+        return 1
+    else:
+        temp = find(root.get_left(), data)
+
+        if temp == 1:
+            return root
+        else:
+            return find(root.get_right(), data)
+
+
+def size(root):
+
+    if not root:
+        return 0
+
+    return size(root.get_left()) + size(root.get_right(0)) + 1
+
+
+def depth(root):
+
+    if not root:
+        return 0
+
+    return max(root.get_left(), root.get_right()) + 1
+
+
+def deepest(root):
+
+    q = Queue.Queue()
+
+    q.enqueue(root)
+
+    node = None
+    while not q.isEmpty():
+
+        node = q.dequeue()
+
+        if node.get_left():
+            q.enqueue(node.get_left())
+        elif node.get_right():
+            q.enqueue(node.get_right())
+
+    return node.get_data()
+
+
+def summarize(root):
+
+    if not root:
+        return 0
+
+    return root.get_data() + summarize(root.get_left()) + summarize(root.get_right())
+
