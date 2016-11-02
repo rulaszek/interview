@@ -31,6 +31,25 @@ class Node:
 
             n = n.next_node
 
+    def k_to_the_nth(self, head, k):
+
+        slow = head
+        fast = head
+        pos = 0
+
+        while fast.next_node and pos < k:
+            fast = fast.next_node
+            pos += 1
+
+        if pos < k:
+            return None
+
+        while fast.next_node:
+            slow = slow.next_node
+            fast = fast.next_node
+
+        return slow.data
+
     def print_kth_to_last(self, head, k):
 
         if head is None:
@@ -66,22 +85,47 @@ class Node:
         return lst
 
 
+class LinkedList(object):
+
+    head = None
+
+    def append(self, data):
+
+        if not self.head:
+            self.head = Node(data)
+            return
+
+        current = self.head
+        while current.next_node:
+            current = current.next_node
+
+        current.next_node = Node(data)
+
+
+def sum_nodes(le, ri):
+
+    re = LinkedList()
+    rem = 0
+
+    while le and ri:
+        w = (rem + le.data + ri.data) % 10
+        rem = (rem + le.data + ri.data) / 10
+        re.append(w)
+        le = le.next_node
+        ri = ri.next_node
+
+    return re.head
+
+
 if __name__ == '__main__':
-    node = Node(5)
-    print node.to_array()
-    node.append(5)
-    print node.to_array()
-    node.append(5)
-    print node.to_array()
-    node.remove_duplicates()
-    print node.to_array()
-    node.append(10)
-    print node.to_array()
-    node.append(15)
-    print node.to_array()
+    left = Node(7)
+    left.append(1)
+    left.append(6)
 
-    node.print_kth_to_last(node, 1)
+    right = Node(5)
+    right.append(9)
+    right.append(2)
 
-    print node.to_array()
-    node.delete_node(node)
-    print node.to_array()
+    result = sum_nodes(left, right)
+
+    print result.to_array()
