@@ -1,7 +1,4 @@
-
-
 def check_for_duplicates(A):
-
     A.sort()
 
     for i in range(0, len(A)):
@@ -15,7 +12,6 @@ def check_for_duplicates(A):
 
 
 def max_repetitions(A):
-
     freq = {}
 
     for el in A:
@@ -36,7 +32,6 @@ def max_repetitions(A):
 
 
 def two_elements_with_sum(A, k):
-
     freq = {}
 
     for el in A:
@@ -46,8 +41,25 @@ def two_elements_with_sum(A, k):
             freq[el] = 1
 
     for el in A:
-        if k-el in freq:
+        if k - el in freq:
             return True
 
     return False
 
+
+def binary_search(array, item):
+    if len(array) == 0:
+        return False
+    else:
+        midpoint = len(array) // 2
+        if array[midpoint] == item:
+            return True
+        else:
+            if item < array[midpoint]:
+                return binary_search(array[:midpoint], item)
+            else:
+                return binary_search(array[midpoint + 1:], item)
+
+
+if __name__ == '__main__':
+    print binary_search([1, 2, 3, 4, 5], 5)
